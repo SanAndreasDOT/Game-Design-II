@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Design II"
+run/main_scene="res://prog_52c.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
