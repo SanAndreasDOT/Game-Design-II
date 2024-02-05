@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://beliodpudlqnp"]
+
+[ext_resource type="Script" path="res://prog_122a.gd" id="1_v1bme"]
+
+[node name="Prog122a" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v1bme")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 542.0
+
+[node name="btnClac" type="Button" parent="."]
+layout_mode = 0
+offset_top = 541.0
+offset_right = 392.0
+offset_bottom = 649.0
+text = "Calculate"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 541.0
+offset_right = 805.0
+offset_bottom = 649.0
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 540.0
+offset_right = 1149.0
+offset_bottom = 648.0
+text = "Exit"
+
+[connection signal="pressed" from="btnClac" to="." method="_on_btn_clac_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

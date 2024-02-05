@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddose74oh52xw"]
+
+[ext_resource type="Script" path="res://lp_4_2.gd" id="1_5c4t0"]
+[ext_resource type="LabelSettings" uid="uid://cwkbjts086b8f" path="res://main.tres" id="2_hxq12"]
+
+[node name="LP4-2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5c4t0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 60.0
+offset_right = 871.0
+offset_bottom = 102.0
+text = "Enter Package Weight:"
+label_settings = ExtResource("2_hxq12")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 126.0
+offset_right = 875.0
+offset_bottom = 168.0
+text = "Enter Package Length:"
+label_settings = ExtResource("2_hxq12")
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 201.0
+offset_right = 871.0
+offset_bottom = 243.0
+text = "Enter Package Width:"
+label_settings = ExtResource("2_hxq12")
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 261.0
+offset_right = 871.0
+offset_bottom = 303.0
+text = "Enter Package Height:"
+label_settings = ExtResource("2_hxq12")
+
+[node name="lblOutput" type="Label" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 329.0
+offset_right = 916.0
+offset_bottom = 494.0
+text = "-"
+label_settings = ExtResource("2_hxq12")
+
+[node name="txtWeight" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 47.0
+offset_right = 749.0
+offset_bottom = 110.0
+
+[node name="txtLength" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 439.0
+offset_top = 111.0
+offset_right = 748.0
+offset_bottom = 174.0
+
+[node name="txtWidth" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 185.0
+offset_right = 726.0
+offset_bottom = 248.0
+
+[node name="txtHeight" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 252.0
+offset_right = 740.0
+offset_bottom = 315.0
+
+[node name="btnCalc" type="Button" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 515.0
+offset_right = 341.0
+offset_bottom = 594.0
+text = "Enter"
+
+[node name="btnClear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 519.0
+offset_right = 664.0
+offset_bottom = 598.0
+text = "Clear"
+
+[node name="btnExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 698.0
+offset_top = 520.0
+offset_right = 952.0
+offset_bottom = 599.0
+text = "Exit"
+
+[connection signal="pressed" from="btnCalc" to="." method="_on_btn_calc_pressed"]
+[connection signal="pressed" from="btnClear" to="." method="_on_btn_clear_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]
