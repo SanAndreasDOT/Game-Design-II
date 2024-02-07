@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgpimtd3rdq5e"]
+
+[ext_resource type="Script" path="res://Player3D.gd" id="1_06xfp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvlmi"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_d6ca7"]
+sky_material = SubResource("ProceduralSkyMaterial_pvlmi")
+
+[sub_resource type="Environment" id="Environment_t333q"]
+background_mode = 2
+sky = SubResource("Sky_d6ca7")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_blv12"]
+size = Vector2(500, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gkjr"]
+albedo_color = Color(0.952941, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6dkh"]
+albedo_color = Color(0, 0, 1, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gjaop"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7fq2"]
+
+[node name="Scene3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t333q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 9652.02, 0)
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("PlaneMesh_blv12")
+material = SubResource("StandardMaterial3D_2gkjr")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.8582, 0.63031, -9.30468)
+use_collision = true
+size = Vector3(32.7479, 2.77735, 32.8924)
+material = SubResource("StandardMaterial3D_d6dkh")
+
+[node name="Player3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60.4189, 0)
+script = ExtResource("1_06xfp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00171995, 14.7986, -0.000331402)
+mesh = SubResource("CapsuleMesh_gjaop")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8012, 0)
+shape = SubResource("CapsuleShape3D_n7fq2")
+
+[node name="Camera3D" type="Camera3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0388739, 15.4222, -0.0476331)
