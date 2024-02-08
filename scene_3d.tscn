@@ -15,7 +15,7 @@ sky = SubResource("Sky_d6ca7")
 tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_blv12"]
-size = Vector2(500, 500)
+size = Vector2(500000, 500000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gkjr"]
 albedo_color = Color(0.952941, 0, 0, 1)
@@ -47,6 +47,12 @@ use_collision = true
 size = Vector3(32.7479, 2.77735, 32.8924)
 material = SubResource("StandardMaterial3D_d6dkh")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.9266, 8.03792, -35.9977)
+use_collision = true
+size = Vector3(32.7479, 2.77735, 32.8924)
+material = SubResource("StandardMaterial3D_d6dkh")
+
 [node name="Player3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60.4189, 0)
 script = ExtResource("1_06xfp")
@@ -61,3 +67,4 @@ shape = SubResource("CapsuleShape3D_n7fq2")
 
 [node name="Camera3D" type="Camera3D" parent="Player3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0388739, 15.4222, -0.0476331)
+fov = 90.0
