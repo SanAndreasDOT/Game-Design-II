@@ -1,16 +1,17 @@
 extends CharacterBody3D
 
 
-const SPEED = 1000
-const JUMP_VELOCITY = 250
+const SPEED = 20
+const JUMP_VELOCITY = 10.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const CAM_SENSITIVITY = 0.03
-@onready var camera = $Camera3D
-
-
+@onready var camera = $Head/Camera3D
+@onready var camera_arm = $SpringArm3D
+@onready var camera_pos = camera.position
+var first_person = true
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -19,7 +20,7 @@ func _physics_process(delta):
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+1		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -36,7 +37,24 @@ func _physics_process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Input.is_action_just_pressed("change_camera"):
+		toggle_camera_parent()
 	move_and_slide()
+	
+	
+func toggle_camera_parent():
+	var parent = "Head"
+	if first_person:
+		parent = "SpringArm3D"
+	var child = camera
+	child.get_parent().remove_child(child)
+	get_node(parent).add_child(child)
+	camera = child
+	if not first_person:
+		camera.position = camera_pos
+	first_person = not first_person
+	
+	
 	
 func _ready():
 	Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -45,7 +63,11 @@ func _ready():
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		self.rotate_y(-event.relative.x * (CAM_SENSITIVITY / 10.0))
-		camera.rotate_x(-event.relative.y * (CAM_SENSITIVITY / 10.0)) 
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
-
+		if first_person:
+			self.rotate_y(-event.relative.x * (CAM_SENSITIVITY / 10.0))
+			camera.rotate_x(-event.relative.y * (CAM_SENSITIVITY / 10.0)) 
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		else:
+			self.rotate_y(-event.relative.x * (CAM_SENSITIVITY / 10.0))
+		camera_arm.rotate_x(-event.relative.y * (CAM_SENSITIVITY / 10.0)) 
+		camera_arm.rotation.x = clamp(camera_arm.rotation.x, deg_to_rad(-75), deg_to_rad(75))

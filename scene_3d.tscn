@@ -54,7 +54,7 @@ size = Vector3(32.7479, 2.77735, 32.8924)
 material = SubResource("StandardMaterial3D_d6dkh")
 
 [node name="Player3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60.4189, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.33078, 0)
 script = ExtResource("1_06xfp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player3D"]
@@ -65,6 +65,13 @@ mesh = SubResource("CapsuleMesh_gjaop")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8012, 0)
 shape = SubResource("CapsuleShape3D_n7fq2")
 
-[node name="Camera3D" type="Camera3D" parent="Player3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0388739, 15.4222, -0.0476331)
+[node name="SpringArm3D" type="SpringArm3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -0.0694826, 15.1739, 0.0279701)
+spring_length = 6.0
+
+[node name="Head" type="Node3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.4032, 0.0278722)
+
+[node name="Camera3D" type="Camera3D" parent="Player3D/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0388739, -0.936205, -8.64296)
 fov = 90.0
