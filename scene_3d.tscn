@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgpimtd3rdq5e"]
+[gd_scene load_steps=11 format=3 uid="uid://dgpimtd3rdq5e"]
 
 [ext_resource type="Script" path="res://Player3D.gd" id="1_06xfp"]
+[ext_resource type="PackedScene" uid="uid://yqdbjy05hi5c" path="res://models/gobot.glb" id="2_u40wv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvlmi"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -48,30 +49,33 @@ size = Vector3(32.7479, 2.77735, 32.8924)
 material = SubResource("StandardMaterial3D_d6dkh")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.9266, 8.03792, -35.9977)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.9266, 3.32647, -35.9977)
 use_collision = true
 size = Vector3(32.7479, 2.77735, 32.8924)
 material = SubResource("StandardMaterial3D_d6dkh")
 
 [node name="Player3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.33078, 0)
+transform = Transform3D(-1.35, 0, -2.03844e-07, 0, 1.35, 0, 2.03844e-07, 0, -1.35, 0, 1.49982, 0)
 script = ExtResource("1_06xfp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00171995, 14.7986, -0.000331402)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_gjaop")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8012, 0)
 shape = SubResource("CapsuleShape3D_n7fq2")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player3D"]
-transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -0.0694826, 15.1739, 0.0279701)
+transform = Transform3D(1, 0, 0, 0, 0.994522, 0.104528, 0, -0.104528, 0.994522, -0.069, 0, 0.028)
 spring_length = 6.0
 
 [node name="Head" type="Node3D" parent="Player3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.4032, 0.0278722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.028)
 
 [node name="Camera3D" type="Camera3D" parent="Player3D/Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0388739, -0.936205, -8.64296)
+transform = Transform3D(0.740741, 0, 0, 0, 0.740741, 0, 0, 0, 0.740741, 0.0388739, 0.205268, -8.64296)
 fov = 90.0
+
+[node name="gobot" parent="Player3D" instance=ExtResource("2_u40wv")]
+transform = Transform3D(-1.35, 0, -1.18021e-07, 0, 1.35, 0, 1.18021e-07, 0, -1.35, 0, -1.01044, 0)
