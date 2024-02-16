@@ -1,7 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgpimtd3rdq5e"]
+[gd_scene load_steps=24 format=3 uid="uid://dgpimtd3rdq5e"]
 
 [ext_resource type="Script" path="res://Player3D.gd" id="1_06xfp"]
 [ext_resource type="PackedScene" uid="uid://yqdbjy05hi5c" path="res://models/gobot.glb" id="2_u40wv"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="3_abf2k"]
+[ext_resource type="Resource" path="res://terrain/data.hterrain" id="4_ox818"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_edrul"]
+[ext_resource type="Texture2D" uid="uid://6y5g6terjrkf" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_Color.jpg" id="6_lj3vx"]
+[ext_resource type="Texture2D" uid="uid://csmtd2xk08wep" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_Color.jpg" id="7_ouqdx"]
+[ext_resource type="Texture2D" uid="uid://byjabu20u05tk" path="res://terrain/textures/Grass001_1K-JPG/Grass001_1K-JPG_NormalGL.jpg" id="8_71xas"]
+[ext_resource type="Texture2D" uid="uid://cvabage6kj5pi" path="res://terrain/textures/PavingStones093_1K-JPG/PavingStones093_1K-JPG_Color.jpg" id="8_nbdlh"]
+[ext_resource type="Texture2D" uid="uid://cxfsutls51wbo" path="res://terrain/textures/Lava001_1K-JPG/Lava001_1K-JPG_Color.jpg" id="9_24a74"]
+[ext_resource type="Texture2D" uid="uid://da2osbe4goxr5" path="res://terrain/textures/Asphalt023S_1K-JPG/Asphalt023S_1K-JPG_NormalGL.jpg" id="9_77jbk"]
+[ext_resource type="Texture2D" uid="uid://dek3410oyknki" path="res://terrain/textures/PavingStones093_1K-JPG/PavingStones093_1K-JPG_NormalGL.jpg" id="11_8kcxt"]
+[ext_resource type="Texture2D" uid="uid://csq815b3xxorc" path="res://terrain/textures/Lava001_1K-JPG/Lava001_1K-JPG_NormalGL.jpg" id="13_vg7o3"]
+[ext_resource type="Texture2D" uid="uid://jxfsu26wn8ky" path="res://terrain/textures/Sign002_1K-JPG/Sign002_1K-JPG_Color.jpg" id="14_vddmy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pvlmi"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,44 +27,40 @@ background_mode = 2
 sky = SubResource("Sky_d6ca7")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_numlo"]
+albedo_texture = ExtResource("7_ouqdx")
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_blv12"]
-size = Vector2(500000, 500000)
+material = SubResource("StandardMaterial3D_numlo")
+size = Vector2(75, 75)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gkjr"]
-albedo_color = Color(0.952941, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6dkh"]
-albedo_color = Color(0, 0, 1, 0)
+albedo_texture = ExtResource("7_ouqdx")
+emission_enabled = true
+emission_texture = ExtResource("9_77jbk")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gjaop"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7fq2"]
+
+[sub_resource type="Resource" id="Resource_bcs5u"]
+script = ExtResource("5_edrul")
+mode = 0
+textures = [[ExtResource("6_lj3vx"), ExtResource("7_ouqdx"), ExtResource("8_nbdlh"), ExtResource("9_24a74")], [ExtResource("8_71xas"), ExtResource("9_77jbk"), ExtResource("11_8kcxt"), ExtResource("13_vg7o3")]]
 
 [node name="Scene3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_t333q")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 9652.02, 0)
 shadow_enabled = true
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="Base" type="CSGMesh3D" parent="."]
 use_collision = true
 mesh = SubResource("PlaneMesh_blv12")
 material = SubResource("StandardMaterial3D_2gkjr")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.8582, 0.63031, -9.30468)
-use_collision = true
-size = Vector3(32.7479, 2.77735, 32.8924)
-material = SubResource("StandardMaterial3D_d6dkh")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.9266, 3.32647, -35.9977)
-use_collision = true
-size = Vector3(32.7479, 2.77735, 32.8924)
-material = SubResource("StandardMaterial3D_d6dkh")
 
 [node name="Player3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(-1.35, 0, -2.03844e-07, 0, 1.35, 0, 2.03844e-07, 0, -1.35, 0, 1.49982, 0)
@@ -79,3 +87,39 @@ fov = 90.0
 
 [node name="gobot" parent="Player3D" instance=ExtResource("2_u40wv")]
 transform = Transform3D(-1.35, 0, -1.18021e-07, 0, 1.35, 0, 1.18021e-07, 0, -1.35, 0, -1.01044, 0)
+
+[node name="Terrain" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_abf2k")
+centered = true
+_terrain_data = ExtResource("4_ox818")
+chunk_size = 16
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_bcs5u")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="YellowTriangle" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.50316, 39.986)
+texture = ExtResource("14_vddmy")
+
+[node name="YellowTriangle2" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.6026, 15.0063, 5.81371)
+texture = ExtResource("14_vddmy")
+
+[node name="YellowTriangle3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.50316, -42.7835)
+texture = ExtResource("14_vddmy")
+
+[node name="YellowTriangle4" type="Sprite3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -39.927, 17.957, 5.5342)
+texture = ExtResource("14_vddmy")
