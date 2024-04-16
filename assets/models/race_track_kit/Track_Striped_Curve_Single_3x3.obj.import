@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bv2koi5vi63j8"
+path="res://.godot/imported/Track_Striped_Curve_Single_3x3.obj-fabe333c62a03bd6de5f1c910f54b0cf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Striped_Curve_Single_3x3.obj-fabe333c62a03bd6de5f1c910f54b0cf.mesh"]
+
+source_file="res://assets/models/race_track_kit/Track_Striped_Curve_Single_3x3.obj"
+dest_files=["res://.godot/imported/Track_Striped_Curve_Single_3x3.obj-fabe333c62a03bd6de5f1c910f54b0cf.mesh", "res://.godot/imported/Track_Striped_Curve_Single_3x3.obj-fabe333c62a03bd6de5f1c910f54b0cf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dsc6kffvlwm5l"
+path="res://.godot/imported/Prop_Decorative_Windmill.obj-82cda150e443507324a9f283235fd14e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Prop_Decorative_Windmill.obj-82cda150e443507324a9f283235fd14e.mesh"]
+
+source_file="res://assets/models/race_track_kit/Prop_Decorative_Windmill.obj"
+dest_files=["res://.godot/imported/Prop_Decorative_Windmill.obj-82cda150e443507324a9f283235fd14e.mesh", "res://.godot/imported/Prop_Decorative_Windmill.obj-82cda150e443507324a9f283235fd14e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

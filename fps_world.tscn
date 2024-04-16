@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0ba5wrlrqynk"]
+
+[ext_resource type="PackedScene" uid="uid://bgs2f1kmwgcjt" path="res://de_dust_2_with_real_light.tscn" id="1_qdvn6"]
+[ext_resource type="PackedScene" uid="uid://d1jdlmskni0y8" path="res://fps_player_template.tscn" id="2_xyce7"]
+[ext_resource type="PackedScene" uid="uid://bcuu20c23qv2r" path="res://fps_enemy_template.tscn" id="3_4otpq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hi2bu"]
+sky_top_color = Color(1, 0.996078, 0.988235, 1)
+sky_horizon_color = Color(0.75, 0.74902, 0.747059, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.75, 0.74902, 0.747059, 1)
+
+[sub_resource type="Sky" id="Sky_jcl0v"]
+sky_material = SubResource("ProceduralSkyMaterial_hi2bu")
+
+[sub_resource type="Environment" id="Environment_q1q2q"]
+background_mode = 2
+sky = SubResource("Sky_jcl0v")
+tonemap_mode = 2
+
+[node name="fps_world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q1q2q")
+
+[node name="de_dust_2_with_real_light" parent="." instance=ExtResource("1_qdvn6")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.0365316, 0, 1.54899)
+
+[node name="fps_player" parent="." instance=ExtResource("2_xyce7")]
+transform = Transform3D(-0.996599, 0, 0.0824081, 0, 1, 0, -0.0824081, 0, -0.996599, 41.2235, 4.76688, -85.3094)
+
+[node name="fps_enemy2" parent="." instance=ExtResource("3_4otpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4674, -2.70566, -61.6693)
+
+[node name="fps_enemy" parent="." instance=ExtResource("3_4otpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.7706, 4.60561, 24.2443)
+
+[node name="fps_enemy4" parent="." instance=ExtResource("3_4otpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3996, -1.90286, -31.7725)
+
+[node name="fps_enemy3" parent="." instance=ExtResource("3_4otpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3925, 0.696177, -25.2966)

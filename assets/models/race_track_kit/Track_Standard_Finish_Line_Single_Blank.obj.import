@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://co3e8an41bum6"
+path="res://.godot/imported/Track_Standard_Finish_Line_Single_Blank.obj-d1fd9c040a5fde2fc3eaef5ac49ea455.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Standard_Finish_Line_Single_Blank.obj-d1fd9c040a5fde2fc3eaef5ac49ea455.mesh"]
+
+source_file="res://assets/models/race_track_kit/Track_Standard_Finish_Line_Single_Blank.obj"
+dest_files=["res://.godot/imported/Track_Standard_Finish_Line_Single_Blank.obj-d1fd9c040a5fde2fc3eaef5ac49ea455.mesh", "res://.godot/imported/Track_Standard_Finish_Line_Single_Blank.obj-d1fd9c040a5fde2fc3eaef5ac49ea455.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

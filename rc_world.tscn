@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy7jv6a88tnsp"]
+
+[ext_resource type="MeshLibrary" uid="uid://bqxny65q4jbfc" path="res://assets/meshes/road_tiles_final.tres" id="2_6ug1m"]
+[ext_resource type="PackedScene" uid="uid://ux86ddrljfg1" path="res://ems_unit.tscn" id="2_uf5g0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1musj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_jhqba"]
+sky_material = SubResource("ProceduralSkyMaterial_1musj")
+
+[sub_resource type="Environment" id="Environment_gyb3a"]
+background_mode = 2
+sky = SubResource("Sky_jhqba")
+tonemap_mode = 2
+
+[node name="rc_world" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gyb3a")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(2, -0.00216177, -0.0032028, 0.00215636, 2, -0.00337792, 0.00320644, 0.00337446, 1.99999, 0, 0, 0)
+mesh_library = ExtResource("2_6ug1m")
+cell_center_y = false
+cell_scale = 2.0
+data = {
+"cells": PackedInt32Array(4, 65535, 655558, 5, 65535, 655558, 6, 65535, 655558, 7, 65535, 655558, 3, 65535, 655558, 2, 65534, 174, 65535, 65533, 182, 65534, 65533, 182, 65533, 65533, 182, 65532, 65533, 182, 65531, 65533, 182, 65530, 65533, 182, 65529, 65533, 182, 65528, 65533, 182, 65527, 65533, 182, 65526, 65533, 182, 65525, 65533, 182, 65524, 65533, 182, 65523, 65533, 182, 65522, 65533, 167, 65520, 65530, 1441974, 65519, 65529, 1048758, 65519, 65528, 1048758, 65519, 65527, 1048758, 65519, 65526, 1048758, 65519, 65525, 1048758, 65519, 65524, 1048758, 65519, 65523, 1048758, 65520, 65522, 1441958, 65522, 65521, 655518, 65530, 65520, 146, 65541, 65517, 1048709, 262139, 65521, 655461, 262140, 65521, 655461, 262141, 65521, 655461, 262142, 65521, 655461, 262143, 65521, 655461, 196608, 65521, 655461, 196609, 65521, 655461, 262139, 65520, 655461, 262140, 65520, 655461, 262141, 65520, 655461, 262142, 65520, 655461, 262143, 65520, 655461, 196608, 65520, 655461, 196609, 65520, 655461, -65529, 65535, 1441801, -65529, 65533, 1048586)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="ems_unit" parent="." instance=ExtResource("2_uf5g0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.529, 0.0227281, -2.24108)

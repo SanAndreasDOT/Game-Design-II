@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://rn26yeufuu2q"
+path="res://.godot/imported/Track_Bridge_Incline_Gentle_Supported.obj-d565632343ae0cc182e453997e82972a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Track_Bridge_Incline_Gentle_Supported.obj-d565632343ae0cc182e453997e82972a.mesh"]
+
+source_file="res://assets/models/race_track_kit/Track_Bridge_Incline_Gentle_Supported.obj"
+dest_files=["res://.godot/imported/Track_Bridge_Incline_Gentle_Supported.obj-d565632343ae0cc182e453997e82972a.mesh", "res://.godot/imported/Track_Bridge_Incline_Gentle_Supported.obj-d565632343ae0cc182e453997e82972a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
