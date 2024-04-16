@@ -37,6 +37,12 @@ func check_and_right_vehicle():
 		self.rotation_degrees = current_rotation
 
 
+func reset_car():
+	if Input.is_action_just_pressed("reset", true):
+		get_tree().reload_current_scene()
+		OS.alert("Game Reset", "Reset")
+
+
 
 
 

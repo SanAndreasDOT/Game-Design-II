@@ -35,4 +35,4 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="ems_unit" parent="." instance=ExtResource("2_uf5g0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.529, 0.0227281, -2.24108)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17.529, 0.0227281, -2.24108)
