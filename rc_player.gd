@@ -1,8 +1,8 @@
 extends VehicleBody3D
 
 const MAX_STEER = 0.4
-const MAX_RPM = 3000
-const MAX_TORQUE = 20
+const MAX_RPM = 300
+const MAX_TORQUE = 200
 const HORSE_POWER = 100
 
 func _ready():
