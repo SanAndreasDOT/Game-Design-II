@@ -516,7 +516,7 @@ mesh = SubResource("ArrayMesh_nv2bx")
 skeleton = NodePath("")
 
 [node name="centerMass" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266015, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0199108, 0.266015, 0.41069)
 top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="centerMass"]
