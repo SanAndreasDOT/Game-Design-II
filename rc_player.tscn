@@ -271,3 +271,5 @@ offset_right = 97.0
 grow_vertical = 0
 text = "0 mph"
 label_settings = SubResource("LabelSettings_s155k")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

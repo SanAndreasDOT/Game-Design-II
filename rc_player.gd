@@ -4,6 +4,9 @@ const MAX_STEER = 0.4
 const MAX_RPM = 300
 const MAX_TORQUE = 200
 const HORSE_POWER = 100
+@onready var audio_player = $AudioStreamPlayer3D
+var drive_sound = preload("res://assets/sounds/Car-Driving.mp3")
+var drive_idle_sound = preload("res://assets/sounds/Sports-Car-Idle.mp3")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -21,6 +24,14 @@ func _physics_process(delta):
 	
 	var fwd_mps = abs((self.linear_velocity * self.transform.basis).z)
 	$Label.text = "%d mph" % (fwd_mps * 2.23694)
+	
+	
+	# Sound
+	if audio_player.playing:
+		await audio_player.finished
+	audio_player.stream = drive_sound if fwd_mps < 2 else drive_idle_sound
+	audio_player.play()
+	
 	
 	$centerMass.global_position = $centerMass.global_position.lerp(self.global_position, delta * 20.0)
 	
