@@ -27,9 +27,8 @@ func _physics_process(delta):
 	
 	
 	# Sound
-	if audio_player.playing:
-		await audio_player.finished
-	audio_player.stream = drive_sound if fwd_mps < 2 else drive_idle_sound
+	
+	audio_player.stream = drive_sound if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") else drive_idle_sound
 	audio_player.play()
 	
 	
