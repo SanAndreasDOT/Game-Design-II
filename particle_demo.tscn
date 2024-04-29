@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://5hly662ettni"]
+
+[ext_resource type="PackedScene" uid="uid://ch055tjdwxsph" path="res://fire_particle.tscn" id="1_cp8l7"]
+[ext_resource type="Script" path="res://particle_demo.gd" id="1_ybjs5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5irtp"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Sky" id="Sky_x4ce5"]
+sky_material = SubResource("ProceduralSkyMaterial_5irtp")
+
+[sub_resource type="Environment" id="Environment_mtos7"]
+background_mode = 2
+sky = SubResource("Sky_x4ce5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3epp2"]
+albedo_color = Color(0.258824, 0.258824, 0.258824, 0.85098)
+
+[node name="particle_demo" type="Node3D"]
+script = ExtResource("1_ybjs5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mtos7")
+
+[node name="fire_particle" parent="." instance=ExtResource("1_cp8l7")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101141, 0)
+height = 0.035
+sides = 16
+material = SubResource("StandardMaterial3D_3epp2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.94406, 0.329773, 0, -0.329773, 0.94406, 0, 1.74667, 2.79556)
