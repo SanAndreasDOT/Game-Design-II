@@ -27,10 +27,8 @@ func _physics_process(delta):
 	
 	
 	# Sound
-	
 	audio_player.stream = drive_sound if Input.is_action_pressed("ui_down") or Input.is_action_pressed("ui_up") else drive_idle_sound
 	audio_player.play()
-	
 	
 	$centerMass.global_position = $centerMass.global_position.lerp(self.global_position, delta * 20.0)
 	
