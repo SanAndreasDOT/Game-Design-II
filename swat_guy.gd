@@ -15,7 +15,7 @@ var inertia = Vector3()
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 
 @onready var model = $swatmodel
-@onready var animator = $swatmodel/AnimationPlayer
+@onready var animation = $swatmodel/AnimationPlayer
 @onready var camera = $Head/Camera3D
 var CAM_SENSITIVITY = 0.02
 const BOB_FREQ = 2.4
@@ -123,8 +123,8 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	var hbob = headbob(t_bob)
 	camera.transform.origin = hbob
-	blaster.position.y = clamp(old_blaster_y + (hbob.y * 0.05 if is_on_floor() else 0),
-							   old_blaster_y-0.5, old_blaster_y+0.5)
+#	blaster.position.y = clamp(old_blaster_y + (hbob.y * 0.05 if is_on_floor() else 0),
+#							   old_blaster_y-0.5, old_blaster_y+0.5)
 	
 	damage_lock = max(damage_lock-delta, 0.0)
 	velocity += inertia
@@ -231,9 +231,7 @@ func do_fire():
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	blaster = $Head/Camera3D/blaster
-	muzzle = $Head/Camera3D/blaster/muzzle
-	old_blaster_y = blaster.position.y
+
 
 
 func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
