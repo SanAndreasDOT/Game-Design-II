@@ -41,5 +41,4 @@ func do_fire(camera, muzzle, spray_amount, attack=ATTACK):
 	var rnd_y = randf_range(-1, 1) * spray_amount
 	var spray_dir = cam_forward + camera.global_transform.basis.x * rnd_x + \
 								  camera.global_transform.basis.y * rnd_y
-	self.global_transform.origin = muzzle.global_transform.origin
 	self.linear_velocity = -spray_dir.normalized() * SPEED

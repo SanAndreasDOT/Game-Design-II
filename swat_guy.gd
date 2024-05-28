@@ -14,8 +14,7 @@ var inertia = Vector3()
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 
-@onready var model = $swatmodel
-@onready var animation = $swatmodel/AnimationPlayer
+
 @onready var camera = $Head/Camera3D
 var CAM_SENSITIVITY = 0.02
 const BOB_FREQ = 2.4
@@ -40,7 +39,7 @@ var ATTACK = 5.0
 
 var CLIP_SIZE = 30
 var AMMO = CLIP_SIZE
-var TOTAL_AMMO = 150
+var TOTAL_AMMO = 1500
 var is_reloading = false
 
 var NORMAL_HEIGHT = 2.0
@@ -99,7 +98,6 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("walk") or Input.is_action_pressed("crouch"):
 		SPEED = WALK_SPEED
-		animation.play("Walk")
 	else:
 		SPEED = NORMAL_SPEED
 	if damage_lock != 0.0:
@@ -123,8 +121,7 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	var hbob = headbob(t_bob)
 	camera.transform.origin = hbob
-#	blaster.position.y = clamp(old_blaster_y + (hbob.y * 0.05 if is_on_floor() else 0),
-#							   old_blaster_y-0.5, old_blaster_y+0.5)
+	
 	
 	damage_lock = max(damage_lock-delta, 0.0)
 	velocity += inertia
@@ -162,24 +159,7 @@ func _physics_process(delta):
 		target_pos =  unaim_pos
 		target_quat = unaim_quat
 		target_fov = unaim_fov
-	blaster.position = blaster.position.lerp(target_pos, delta * 10.0)
-	var cur_quat = Quaternion.from_euler(degrees_to_radians(blaster.rotation_degrees))
-	blaster.rotation_degrees = radians_to_degrees(cur_quat.slerp(target_quat, delta * 10.0).get_euler())
 	
-	
-	if Input.is_action_pressed("crouch"):
-		$CollisionShape3D.shape.height = CROUCH_HEIGHT + 0.05
-		$CollisionShape3D.shape.radius = CROUCH_COLLISION_RAD
-		$MeshInstance3D.scale.y = CROUCH_HEIGHT/NORMAL_HEIGHT
-		$Head.position.y = lerp($Head.position.y, CROUCH_HEAD, delta*5.0)
-		SPRAY_AMOUNT = CROUCH_SPRAY_AMOUNT
-	if Input.is_action_just_released("crouch"):
-		$CollisionShape3D.shape.height = NORMAL_HEIGHT
-		$CollisionShape3D.shape.radius = NORMAL_COLLISION_RAD
-		$MeshInstance3D.scale.y = 1.0
-		$Head.position.y = lerp($Head.position.y, NORMAL_HEAD, delta*5.0)
-		SPRAY_AMOUNT = NORMAL_SPRAY_AMOUNT
-	move_and_slide()
 	
 	if int(HEALTH) <= 0:
 		HEALTH = 0
@@ -190,18 +170,12 @@ func _physics_process(delta):
 	
 	if len(get_tree().get_nodes_in_group("Enemy")) <= 0:
 		await get_tree().create_timer(0.25).timeout
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		OS.alert("You win!", "Level 1 Complete")
-		get_tree().change_scene_to_file("res://police_ufo_scene_fps.tscn")
-		OS.alert("You Have Completed the game" , "Game Complete")
+
 		
 	
 	if int(HEALTH) <= 0:
 		HEALTH = 0
-		await get_tree().create_timer(0.25).timeout
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		OS.alert("You died!")
-		get_tree().reload_current_scene()
+
 	
 	# Right Joystick
 	var joystick_index = 0
@@ -231,7 +205,6 @@ func do_fire():
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 
 
 func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
