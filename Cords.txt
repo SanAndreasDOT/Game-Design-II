@@ -1,0 +1,14 @@
+x40.42
+y144.58
+z138.779
+
+rotation y -180
+
+
+scale 100 all
+
+scar rotaion 
+
+scar.tscn
+swat_guy_with_anim.tscn
+police_raid.tscn

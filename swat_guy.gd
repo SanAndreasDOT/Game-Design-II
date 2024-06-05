@@ -65,7 +65,14 @@ var target_pos = unaim_pos
 var target_quat = unaim_quat #rotation
 var target_fov = 75
 
-
+func reset_scene(reset):
+	if Input.is_anything_pressed():
+		OS.alert("Scene Reseting", "Reset")
+		get_tree().reload_current_scene()
+		reset = true
+	else:
+		reset = false
+	return reset
 
 func degrees_to_radians(degrees: Vector3) -> Vector3:
 	return Vector3(
@@ -205,6 +212,11 @@ func do_fire():
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	blaster = $scarmodel/scar/sketchfab_model/mainmodel/rootnode
+	muzzle = $scarmodel/scar/sketchfab_model/mainmodel/rootnode/muzzle
+
+
+
 
 
 func take_damage(dmg, override=false, headshot=false, _spawn_origin=null):
